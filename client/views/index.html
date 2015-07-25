@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<head>
-    <title>Tellus about yourself</title>
-</head>
-<body>
+<html ng-app="tellUs">
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script> 
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.js"></script>
+		<script type="text/javascript" src="../app.js"></script>
+    	<title>Tellus about your meal</title>
+	</head>
+	<body ng-controller="ItemController as itemCtrl">
+	<div ng-repeat="item in itemCtrl.items">
+		<h3>{{item.name}}</h3>
+	</div>    
     
-    <p>Hello World!</p>
 
-</body>
+	</body>
+</html>
