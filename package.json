@@ -1,0 +1,9 @@
+{
+  "name": "tellus",
+  "version": "0.0.1",
+  "description": "Tellus about yourself",
+  "dependencies": {
+    "express": "^4.10.2",
+    "node.io": "^0.5.1"
+  }
+}
