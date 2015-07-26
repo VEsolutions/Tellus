@@ -4,6 +4,7 @@
   "description": "Tellus about yourself",
   "dependencies": {
     "express": "^4.10.2",
+    "mongoose": "^4.1.0",
     "node.io": "^0.5.1"
   }
 }
