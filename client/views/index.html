@@ -9,6 +9,10 @@
 	<body ng-controller="ItemController as itemCtrl">
 	<div ng-repeat="item in itemCtrl.items">
 		<h3>{{item.name}}</h3>
+		<div>
+			{{item.description}}
+			<button>{{item.yum}}</button>
+		</div>
 	</div>    
     
 

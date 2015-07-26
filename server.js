@@ -1,4 +1,5 @@
 var express                 = require('express'),
+	mongoose				= require('mongoose'),
     app                     = express(),
     http                    = require('http').Server(app);
 
