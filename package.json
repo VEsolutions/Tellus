@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "description": "Tellus about yourself",
   "dependencies": {
+    "angular-resource": "^1.4.3",
+    "body-parser": "^1.13.2",
     "express": "^4.10.2",
     "mongoose": "^4.1.0",
-    "node.io": "^0.5.1"
+    "node.io": "^0.5.1",
+    "serve-favicon": "^2.3.0"
   }
 }
