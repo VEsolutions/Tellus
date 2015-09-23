@@ -36,18 +36,21 @@
         })
 
         itemsCtrl.addPost = function() {
-            var request = $http({
+/*            var request = $http({
+                    headers: {'Content-Type': 'application/json'},
                     method: 'POST',
-                    url: '/items',
-                    data: {name: itemsCtrl.title,
+                    url: './items',
+                    data: { name: itemsCtrl.title,
+                            description: itemsCtrl.description},
+                    params: {name: itemsCtrl.title,
                             description: itemsCtrl.description}
-                    //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
-            .then(function(response) {
-
+            })*/
+            var data = {name: itemsCtrl.title, description: itemsCtrl.description};
+            $http.post('/items', data).then(function(response) {
+                alert(response);
             },
             function(response) {
-
+                alert(response);
             });
         }
 

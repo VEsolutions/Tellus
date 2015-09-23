@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 require('./server/models/itemModel.js');
+
 require('./routes.js') (app);
 
 app.use('/bower', express.static(__dirname + '/bower_components'));

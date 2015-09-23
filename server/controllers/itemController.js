@@ -15,11 +15,16 @@ exports.findById = function(req, res) {
 };
 
 exports.add = function(req, res) {
-    Item.insert(req.body, function (err, item) {
+    var item = new Item();
+    item.name = req.body.name;
+    item.description = req.body.description;
+    item.yum = 0;
+    //item.date = Date.now;
+    item.save(function (err) {
         if (err) {
             return console.log(err);
         }
-        return res.send(item);
+        return res.send(item.name + " description:" + req.body.description);
     });
 };
 
