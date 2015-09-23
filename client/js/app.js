@@ -1,8 +1,11 @@
 (function(){
-    var app = angular.module('tellUs', ['ngResource']);
+    var app = angular.module('tellUs', ['ngResource', 'ui.bootstrap']);
 
     app.factory('ItemService', function($resource) {
-        return $resource('./items/:id', {id: '@id'});
+        return $resource('./items/:id', {id: '@id'}, {
+            query: {method:'GET', isArray:true },
+            post: {method:'POST'}
+        });
     });
 
 
@@ -10,6 +13,12 @@
         this.items = [];
 
         this.items = ItemService.query();
+
+        this.addPost = function(ItemService) {
+            ItemService.post(this.title);
+        };
+
+
     });
 
     // app.controller('itemsController', ['$resource', function ($resource) {

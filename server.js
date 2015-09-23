@@ -1,6 +1,6 @@
 var express                 = require('express'),
     mongoose                = require('mongoose'),
-    favicon                 = require('serve-favicon'),
+
     //fs                      = require('fs'),
     bodyParser              = require('body-parser');
 
@@ -16,11 +16,10 @@ app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(favicon(__dirname + '/client/images/favicon.ico'));
-
 require('./server/models/itemModel.js');
 require('./routes.js') (app);
 
+app.use('/bower', express.static(__dirname + '/bower_components'))
 app.use('/css', express.static(__dirname + '/client/css'));
 app.use('/js', express.static(__dirname + '/client/js'));
 

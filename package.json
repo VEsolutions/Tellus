@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "description": "Tellus about yourself",
   "dependencies": {
+    "angular": "^1.5.0-beta.0",
     "angular-resource": "^1.4.3",
+    "angular-ui-bootstrap": "^0.13.4",
     "body-parser": "^1.13.2",
+    "bootstrap": "^3.3.5",
     "express": "^4.10.2",
     "mongoose": "^4.1.0",
     "node.io": "^0.5.1",

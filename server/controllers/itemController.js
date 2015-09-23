@@ -15,7 +15,7 @@ exports.findById = function(req, res) {
 };
 
 exports.add = function(req, res) {
-    Item.create(req.body, function (err, item) {
+    Item.insert(req.body, function (err, item) {
         if (err) {
             return console.log(err);
         }
