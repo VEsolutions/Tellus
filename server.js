@@ -19,8 +19,9 @@ app.use(bodyParser.json());
 require('./server/models/itemModel.js');
 require('./routes.js') (app);
 
-app.use('/bower', express.static(__dirname + '/bower_components'))
+app.use('/bower', express.static(__dirname + '/bower_components'));
 app.use('/css', express.static(__dirname + '/client/css'));
+app.use('/images', express.static(__dirname + '/client/images'));
 app.use('/js', express.static(__dirname + '/client/js'));
 
 

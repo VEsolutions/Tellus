@@ -1,10 +1,10 @@
 (function(){
-    var app = angular.module('tellUs', ['ngResource', 'ui.bootstrap']);
+ /*   var app = angular.module('tellUs', ['ngResource', 'ui.bootstrap']);
 
     app.factory('ItemService', function($resource) {
         return $resource('./items/:id', {id: '@id'}, {
             query: {method:'GET', isArray:true },
-            post: {method:'POST'}
+            save: {method:'POST'}
         });
     });
 
@@ -15,32 +15,42 @@
         this.items = ItemService.query();
 
         this.addPost = function(ItemService) {
-            ItemService.post(this.title);
+            this.items.push([this.title, this.description]);
+            ItemService.save([this.title, this.description]);
         };
 
 
-    });
-
-    // app.controller('itemsController', ['$resource', function ($resource) {
-    //     var Item = $resource('api/items:item', {item: "@item"});
-
-    //     this.items = [];
-
-        
-    //     Item.query(function(results) {
-    //         this.items = results;
-    //         console.log(results);
-    //     });
-    // }]);
+    });*/
 
 
-    // app.controller('ItemController', function(){
-    //  this.items = meals;
-    // });
+    var app = angular.module('tellUs', ['ui.bootstrap']);
 
-    // var meals = [{
-    //  name: 'McDonalds',
-    //  description: "Donken du vet..",
-    //  yum: 0
-    // }];
+    app.controller('itemsController', ['$http', function($http) {
+
+        itemsCtrl = this;
+        itemsCtrl.items = []
+
+
+        $http.get('./items').success(function(data) {
+            itemsCtrl.items = data;
+        })
+
+        itemsCtrl.addPost = function() {
+            var request = $http({
+                    method: 'POST',
+                    url: '/items',
+                    data: {name: itemsCtrl.title,
+                            description: itemsCtrl.description}
+                    //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
+            .then(function(response) {
+
+            },
+            function(response) {
+
+            });
+        }
+
+    }]);
+
 })();
