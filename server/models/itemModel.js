@@ -6,6 +6,7 @@ var ItemSchema = new Schema({
     description: {type:String, trim:true},
     yum: {type:Number, default:0},
     date: {type:Date, default:Date.now},
+    imgurl: {type:String, trim:true}
 });
 
 //module.exports = 

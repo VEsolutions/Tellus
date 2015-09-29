@@ -1,5 +1,6 @@
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 Item = mongoose.model('items');
+var http = require('http');
 
 exports.findAll = function(req, res) {
     Item.find({}, function(err, results) {
@@ -18,14 +19,42 @@ exports.add = function(req, res) {
     var item = new Item();
     item.name = req.body.name;
     item.description = req.body.description;
+    item.imgurl = "";
     item.yum = 0;
-    //item.date = Date.now;
-    item.save(function (err) {
-        if (err) {
-            return console.log(err);
-        }
-        return res.send(item.name + " description:" + req.body.description);
+
+    function save(){
+        //console.log("saved");
+        item.save(function (err) {
+            if (err) {
+                return console.log(err);
+            }
+            return res.send(item.name + " description:" + item.description);
+        });
+    }
+
+    var searchWord = item.name;
+    var body = "";
+
+    http.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + searchWord, function(res) {
+        console.log("Got response: " + res.statusCode);
+        res.on('data', function(d) {
+            body += d;
+        });
+
+        res.on('end', function() {
+            var parsed = JSON.parse(body);
+            var data = parsed["data"];
+            console.log(data);
+            item.imgurl = data["image_url"];
+            console.log(item.imgurl);
+            save();
+        });
+
+    }, save).on('error', function(e, save) {
+        console.log("Got error: " + e.message);
+        save();
     });
+    
 };
 
 exports.update = function(req, res) {

@@ -47,10 +47,10 @@
             })*/
             var data = {name: itemsCtrl.title, description: itemsCtrl.description};
             $http.post('/items', data).then(function(response) {
-                alert(response);
+                itemsCtrl.items.push({name: itemsCtrl.title, description: itemsCtrl.description, yum: "0"});
             },
             function(response) {
-                alert(response);
+                alert("Server error");
             });
         }
 

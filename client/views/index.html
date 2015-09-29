@@ -8,6 +8,7 @@
 <body ng-controller="itemsController as itemCtrl">
 <div class="container-fluid">
 	<div ng-repeat="item in itemCtrl.items" class="col-md-4">
+        <img ng-src="{{ item.imgurl }}" alt=""/>
 		<h3>{{item.name}}</h3>
 		<div>
 			{{item.description}}

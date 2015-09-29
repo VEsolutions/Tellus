@@ -7,6 +7,6 @@
     "body-parser": "^1.13.2",
     "express": "^4.10.2",
     "mongoose": "^4.1.0",
-    "node.io": "^0.5.1",
+    "node.io": "^0.5.1"
   }
 }
