@@ -59,15 +59,33 @@ exports.add = function(req, res) {
 
 exports.update = function(req, res) {
     var id = req.params.id;
-    var updates = req.body;
+    var updateNum = req.body.number;
+    //console.log(req.params.id + updateNum);
 
-    Item.update({'_id':id}, req.body, function(err, numbersAffected) {
+    Item.findOne({'_id':id}, function(err, item) {
+        if (err) {
+            res.send(err);
+        }
+        //console.log("Got this: " + item);
+        // Update the existing quantity
+        item.yum = item.yum + updateNum; //req.body.quantity;
+
+        //console.log("yums: " + item.yum);
+        // Save the item and check for errors
+        item.save(function(err) {
+            if (err) {
+                res.send(err);
+            }
+            res.json(item);
+        });
+    });
+    /*Item.update({'_id':id}, { $inc: { yum: updateNum} }, function(err, numbersAffected) {
         if (err) {
             return console.log(err);
         }
         console.log('Updated %d items', numbersAffected);
         return res.send(202);
-    });
+    });*/
 };
 
 exports.delete = function(req, res) {

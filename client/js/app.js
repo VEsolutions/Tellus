@@ -21,6 +21,21 @@
             });
         }
 
+        itemsCtrl.update = function(post, number) {
+            var data = {id: post._id, number: number};
+            $http.put('/items/'+post._id, data).then(function(response) {
+                for(var i = 0; i < itemsCtrl.items.length; i++){
+                    if(itemsCtrl.items[i]._id === response['data']._id) {
+                        itemsCtrl.items[i].yum = response['data'].yum;
+
+                    }
+                }
+            }, 
+            function(response) {
+                alert("Unsuccessfull update :/");
+            });
+        };
+
     }]);
 
 })();

@@ -26,9 +26,9 @@
 		<h3>{{item.name}}</h3>
 		<div>
 			{{item.description}}
-			<button action="update(1)" class="btn btn-info">Upvote</button>
+			<button ng-click="itemCtrl.update(item, 1)" class="btn btn-info">Upvote</button>
             <label class="rating">{{item.yum}}</label>
-            <button action="update(-1)" class="btn btn-info">Downvote</button>
+            <button ng-click="itemCtrl.update(item, -1)" class="btn btn-info">Downvote</button>
 		</div>
 	</div>
 </div>
