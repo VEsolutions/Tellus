@@ -26,7 +26,9 @@
 		<h3>{{item.name}}</h3>
 		<div>
 			{{item.description}}
-			<button class="btn btn-info">{{item.yum}}</button>
+			<button action="update(1)" class="btn btn-info">Upvote</button>
+            <label class="rating">{{item.yum}}</label>
+            <button action="update(-1)" class="btn btn-info">Downvote</button>
 		</div>
 	</div>
 </div>
