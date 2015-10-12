@@ -8,8 +8,8 @@ var express                 = require('express'),
 //    itemController          = require('./server/controllers/itemController');
     //http                    = require('http').Server(app);
 
-
-var db = mongoose.connect('mongodb://localhost/tellus');
+var config = require(__dirname + '/config/config.js');
+var db = mongoose.connect(config.url || 'mongodb://localhost/tellus');
 
 
 app = express();
