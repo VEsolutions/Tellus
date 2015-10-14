@@ -21,14 +21,14 @@
 </nav>
 
 <div class="container">
-	<div id="posts" ng-repeat="item in itemCtrl.items | orderBy:'-date'" class="col-md-4">
+	<div ng-repeat="item in itemCtrl.items | orderBy:'-date'" class="col-md-4 posts">
         <img class="img" ng-src="{{ item.imgurl || 'https://media.giphy.com/media/zc1JNCgBXCa88/giphy.gif' }}"/>
-		<h3>{{item.name}}</h3>
-		<div>
-			{{item.description}}
+		<div class="postInfo">
 			<button ng-click="itemCtrl.update(item, 1)" class="btn btn-info">Upvote</button>
             <label class="rating">{{item.yum}}</label>
             <button ng-click="itemCtrl.update(item, -1)" class="btn btn-info">Downvote</button>
+            <h3>{{item.name}}</h3>
+            {{item.description}}
 		</div>
 	</div>
 </div>

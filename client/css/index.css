@@ -35,15 +35,25 @@ body {
   padding-top: 40px;
   width: 50%;
   margin: auto;
-
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
 
-#posts {
+.posts {
   text-align: right;
-  vertical-align: bottom;
+  height: 400px;
+}
+
+.postInfo {
 }
 
 .img {
   width: 90%;
   z-index: -1;
+  padding-bottom: 5px;
+}
+
+h3 {
+  margin: 5px;
 }

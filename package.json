@@ -8,5 +8,20 @@
     "express": "^4.10.2",
     "mongoose": "^4.1.0",
     "node.io": "^0.5.1"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "routes.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VEsolutions/Tellus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VEsolutions/Tellus/issues"
+  },
+  "homepage": "https://github.com/VEsolutions/Tellus#readme"
 }
