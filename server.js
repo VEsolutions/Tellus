@@ -1,6 +1,8 @@
 var express                 = require('express'),
+    session                 = require('express-session'),
     mongoose                = require('mongoose'),
-
+    MongoStore              = require('connect-mongo')(session),
+    cookieParser            = require('cookie-parser');
     //fs                      = require('fs'),
     bodyParser              = require('body-parser');
 
@@ -13,8 +15,19 @@ var db = mongoose.connect(config.url || 'mongodb://localhost/tellus');
 
 
 app = express();
+
+app.use(session({
+    collection: 'sessions',
+    resave: false,
+    saveUninitialized: false,
+    secret: config.session_secret,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    stringify: true,
+    ttl: 2*24*60*60 //1 day before expiration
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 require('./server/models/itemModel.js');
 

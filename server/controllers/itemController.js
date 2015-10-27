@@ -76,6 +76,14 @@ exports.update = function(req, res) {
             if (err) {
                 res.send(err);
             }
+            console.log(req.cookies);
+            if(req.cookies['votes']) {
+                //res.cookies['votes'].append({id : updateNum});
+            } else {
+                var cookieValue = JSON.stringify({id : updateNum}, { maxAge: 2*24*60*60*1000 });
+                console.log(cookieValue);
+                res.cookie('votes', cookieValue);
+            }
             res.json(item);
         });
     });
