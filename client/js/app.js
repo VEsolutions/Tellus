@@ -32,17 +32,19 @@
         }
 
         itemsCtrl.addPost = function() {
-             $http.post('/items', newItem).then(function(response) {
-                    itemsCtrl.items.push({name: itemsCtrl.newItem.name, description: itemsCtrl.newItem.description, yum: "0", imgurl: itemsCtrl.newItem.imgurl});
-                },
-                function(response) {
-                    alert("Server error");
-                });
-             resetNewItem();
+            $http.post('./items', itemsCtrl.newItem).then(function(response) {
+                itemsCtrl.items.push({name: itemsCtrl.newItem.name, description: itemsCtrl.newItem.description, yum: "0", imgurl: itemsCtrl.newItem.imgurl});
+                itemsCtrl.resetNewItem();
+
+            },
+            function(response) {
+                alert("Server error");
+            });
         }
 
         itemsCtrl.resetNewItem = function() {
             itemsCtrl.newItem = {};
+            itemsCtrl.incoming = false;
         }
 
 
