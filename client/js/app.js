@@ -46,16 +46,17 @@
         itemsCtrl.resetNewItem = function() {
             itemsCtrl.newItem = {};
             itemsCtrl.incoming = false;
+            itemsCtrl.title = "";
+            itemsCtrl.description = "";
         }
 
 
         itemsCtrl.update = function(post, number) {
             var data = {id: post._id, number: number};
-            $http.put('/items/'+post._id, data).then(function(response) {
+            $http.put('./items/'+post._id, data).then(function(response) {
                 for(var i = 0; i < itemsCtrl.items.length; i++){
                     if(itemsCtrl.items[i]._id === response['data']._id) {
                         itemsCtrl.items[i].yum = response['data'].yum;
-
                     }
                 }
             }, 
