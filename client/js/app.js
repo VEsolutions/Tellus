@@ -13,29 +13,9 @@
             itemsCtrl.items = data;
         })
 
-        itemsCtrl.addPost = function() {
+        itemsCtrl.previewPost = function() {
             var data = {name: itemsCtrl.title, description: itemsCtrl.description, imgurl: ""};
             var body = "";
-
-            // http.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + searchWord, function(res) {
-            //     console.log("Got response: " + res.statusCode);
-            //     res.on('data', function(d) {
-            //         body += d;
-            //     });
-
-            //     res.on('end', function() {
-            //         var parsed = JSON.parse(body);
-            //         var data = parsed["data"];
-            //         console.log(data);
-            //         item.imgurl = data["image_url"];
-            //         console.log(item.imgurl);
-            //         save();
-            //     });
-
-            // }, save).on('error', function(e, save) {
-            //     console.log("Got error: " + e.message);
-            //     save();
-            // });
 
             $http.get("http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=" + data.name)
             .then(function(res){ //successfull callback
@@ -46,21 +26,25 @@
                 itemsCtrl.newItem = data;
                 itemsCtrl.incoming = true;
 
+            }, function(res) { // error callback
+                alert(res.message);
+            });
+        }
 
-                //Post if yes.
-                $http.post('/items', data).then(function(response) {
-                    itemsCtrl.items.push({name: itemsCtrl.title, description: itemsCtrl.description, yum: "0"});
+        itemsCtrl.addPost = function() {
+             $http.post('/items', newItem).then(function(response) {
+                    itemsCtrl.items.push({name: itemsCtrl.newItem.name, description: itemsCtrl.newItem.description, yum: "0", imgurl: itemsCtrl.newItem.imgurl});
                 },
                 function(response) {
                     alert("Server error");
                 });
-
-
-            }, function(res) { // error callback
-                alert(res.message);
-            });
-
+             resetNewItem();
         }
+
+        itemsCtrl.resetNewItem = function() {
+            itemsCtrl.newItem = {};
+        }
+
 
         itemsCtrl.update = function(post, number) {
             var data = {id: post._id, number: number};
