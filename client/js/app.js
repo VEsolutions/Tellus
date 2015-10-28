@@ -25,20 +25,21 @@
                 data.imgurl = parsedData['image_url'];
                 itemsCtrl.newItem = data;
                 itemsCtrl.incoming = true;
-
             }, function(res) { // error callback
                 alert(res.message);
             });
         }
 
         itemsCtrl.addPost = function() {
-            $http.post('./items', itemsCtrl.newItem).then(function(response) {
-                itemsCtrl.items.push({name: itemsCtrl.newItem.name, description: itemsCtrl.newItem.description, yum: "0", imgurl: itemsCtrl.newItem.imgurl});
+            itemsCtrl.items.push({name: itemsCtrl.newItem.name, description: itemsCtrl.newItem.description, yum: "0", imgurl: itemsCtrl.newItem.imgurl});
+            itemsCtrl.incoming = false;
+            $http.post('./items', itemsCtrl.newItem)
+            .then(function(response) {
                 itemsCtrl.resetNewItem();
-
             },
             function(response) {
                 alert("Server error");
+                itemsCtrl.resetNewItem();
             });
         }
 
