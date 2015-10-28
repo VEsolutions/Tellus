@@ -8,7 +8,11 @@
         itemsCtrl.newItem = {};
         itemsCtrl.incoming = false;
         var votesCookie = $cookies.get('allVotes');
+        if(!votesCookie) {
+            votesCookie = "";
+        }
         itemsCtrl.votedOn = [];
+
         if(votesCookie.indexOf(', ') != -1) {
             itemsCtrl.votedOn = votesCookie.split(', ');
         }
