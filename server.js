@@ -19,11 +19,11 @@ app = express();
 app.use(session({
     collection: 'sessions',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     secret: config.session_secret,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     stringify: true,
-    ttl: 2*24*60*60 //1 day before expiration
+    ttl: 2*24*60*60, //1 day before expiration
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

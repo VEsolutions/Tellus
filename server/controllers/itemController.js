@@ -58,11 +58,12 @@ exports.add = function(req, res) {
 };
 
 exports.update = function(req, res) {
-    var id = req.params.id;
+    var objectId = req.params.id;
     var updateNum = req.body.number;
+    console.log(objectId);
     //console.log(req.params.id + updateNum);
 
-    Item.findOne({'_id':id}, function(err, item) {
+    Item.findOne({'_id':objectId}, function(err, item) {
         if (err) {
             res.send(err);
         }
@@ -77,12 +78,10 @@ exports.update = function(req, res) {
                 res.send(err);
             }
             console.log(req.cookies);
-            if(req.cookies['votes']) {
-                //res.cookies['votes'].append({id : updateNum});
+            if(req.session['votes']) {
+                req.session['votes'] = req.session['votes'] + ', ' + objectId;
             } else {
-                var cookieValue = JSON.stringify({id : updateNum}, { maxAge: 2*24*60*60*1000 });
-                console.log(cookieValue);
-                res.cookie('votes', cookieValue);
+                req.session['votes'] = objectId;
             }
             res.json(item);
         });
