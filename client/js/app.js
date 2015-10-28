@@ -8,12 +8,12 @@
         itemsCtrl.newItem = {};
         itemsCtrl.incoming = false;
         var votesCookie = $cookies.get('allVotes');
-        var votedOn = [];
+        itemsCtrl.votedOn = [];
         if(votesCookie.indexOf(', ') != -1) {
-            votedOn = votesCookie.split(', ');
+            itemsCtrl.votedOn = votesCookie.split(', ');
         }
         itemsCtrl.isClicked = function(id) {
-            if(votedOn.indexOf(id) == -1) {
+            if(itemsCtrl.votedOn.indexOf(id) == -1) {
                 return false;
             }            
             return true;
@@ -68,7 +68,7 @@
 
         itemsCtrl.update = function(post, number) {
             var data = {id: post._id, number: number};
-            votedOn.push(post.id);
+            itemsCtrl.votedOn.push(post._id);
             $http.put('./items/'+post._id, data).then(function(response) {
                 for(var i = 0; i < itemsCtrl.items.length; i++){
                     if(itemsCtrl.items[i]._id === response['data']._id) {

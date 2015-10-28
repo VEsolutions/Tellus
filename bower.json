@@ -1,0 +1,32 @@
+{
+  "name": "tellus",
+  "description": "Tellus about yourself",
+  "main": "server.js",
+  "authors": [
+    "elmgren93@gmail.com",
+    "ericbl@kth.se"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "gif",
+    "mean"
+  ],
+  "homepage": "https://github.com/VEsolutions/Tellus",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~0.13.4",
+    "angular-cookies": "~1.4.7",
+    "bootstrap-css": "~3.3.4"
+  },
+  "devDependencies": {
+    "angular-cookies": "~1.4.7"
+  }
+}
