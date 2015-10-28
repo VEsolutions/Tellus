@@ -24,9 +24,9 @@
     	<div ng-repeat="item in itemCtrl.items | orderBy:'-date'" class="col-md-4 posts">
             <img class="img" ng-src="{{ item.imgurl || 'https://media.giphy.com/media/zc1JNCgBXCa88/giphy.gif' }}"/>
     		<div class="postInfo">
-    			<button ng-click="itemCtrl.update(item, 1)" class="btn btn-info" ng-class="{ item._id }">Upvote</button>
+    			<button ng-click="itemCtrl.update(item, 1)" class="btn btn-info" ng-disabled="{{itemCtrl.isClicked(item._id)}}">Upvote</button>
                 <label class="rating">{{item.yum}}</label>
-                <button ng-click="itemCtrl.update(item, -1)" class="btn btn-info" ng-class="{{ item._id }}">Downvote</button>
+                <button ng-click="itemCtrl.update(item, -1)" class="btn btn-info" ng-disabled="{{itemCtrl.isClicked(item._id)}}">Downvote</button>
                 <h3>{{item.name}}</h3>
                 {{item.description}}
     		</div>
