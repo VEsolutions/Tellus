@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="/css/index.css">
     <title>Tellus about your meal</title>
 </head>
-<body ng-controller="itemsController as itemCtrl">
+<body ng-controller="itemsController as itemCtrl" ng-class="{ dialogIsOpen: itemCtrl.incoming }">
 <div id="page-wrap">
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
