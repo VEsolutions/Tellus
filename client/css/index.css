@@ -21,7 +21,6 @@ nav {
 
 
 /* Body */
-
 body {
   padding-bottom: 75px;
 }
@@ -31,8 +30,6 @@ body {
 }
 
 .container {
-  /*padding: 5px;
-  padding-top: 40px;*/
   width: 50%;
   margin: auto;
   display: flex;
@@ -59,7 +56,6 @@ h3 {
 }
 
 /* Modal box */
-
 #modal {
   background: white;
   text-align: center;
@@ -70,15 +66,10 @@ h3 {
   margin: -25% 0 0 -25%;
 
   transform: scale(1.5);
-
-
   opacity: 0;
   pointer-events: none;
 }
 
-#modal img {
-  padding: 5px;
-}
 
 .dialogIsOpen #page-wrap {
   -webkit-filter: blur(5px) grayscale(50%);
@@ -87,11 +78,12 @@ h3 {
   pointer-events: none;
 }
 
+
+
 .dialogIsOpen #modal {
   transform: scale(1);
   opacity: 1;
 
-  z-index: 5;
   pointer-events: auto;
 }
 
