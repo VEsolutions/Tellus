@@ -39,7 +39,7 @@ body {
 
 .posts {
   text-align: right;
-  height: 400px;
+  padding-bottom: 15px;
 }
 
 .postInfo {
