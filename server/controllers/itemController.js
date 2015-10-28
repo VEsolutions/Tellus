@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 Item = mongoose.model('items');
 var http = require('http');
+cookieParser = require('cookie-parser');
 
 exports.findAll = function(req, res) {
     Item.find({}, function(err, results) {
@@ -54,9 +55,13 @@ exports.update = function(req, res) {
             }
             console.log(req.cookies);
             if(req.session['votes']) {
+                console.log(req.session['votes']);
+
                 req.session['votes'] = req.session['votes'] + ', ' + objectId;
+                res.cookie('allVotes', req.session['votes'], { maxAge: 14*24*60*60*1000, httpOnly: false });
             } else {
                 req.session['votes'] = objectId;
+                res.cookie('allVotes', req.session['votes'], { maxAge: 14*24*60*60*1000, httpOnly: false });
             }
             res.json(item);
         });

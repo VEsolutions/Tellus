@@ -1,17 +1,28 @@
 (function(){
-    var app = angular.module('tellUs', ['ui.bootstrap']);
+    var app = angular.module('tellUs', ['ngCookies', 'ui.bootstrap']);
 
-    app.controller('itemsController', ['$http', function($http) {
+    app.controller('itemsController', ['$http', '$cookies', function($http, $cookies) {
 
         itemsCtrl = this;
         itemsCtrl.items = [];
         itemsCtrl.newItem = {};
         itemsCtrl.incoming = false;
+        var votesCookie = $cookies.get('allVotes');
+        var votedOn = [];
+        if(votesCookie.indexOf(', ') != -1) {
+            votedOn = votesCookie.split(', ');
+        }
+        for (var i = votedOn.length - 1; i >= 0; i--) {
+            
+        };
 
 
         $http.get('./items').success(function(data) {
             itemsCtrl.items = data;
         })
+
+        
+        //alert(votesCookie);
 
         itemsCtrl.previewPost = function() {
             var data = {name: itemsCtrl.title, description: itemsCtrl.description, imgurl: ""};

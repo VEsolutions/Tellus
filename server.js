@@ -13,11 +13,12 @@ var express                 = require('express'),
 var config = require(__dirname + '/config/config.js');
 var db = mongoose.connect(config.url || 'mongodb://localhost/tellus');
 
-
 app = express();
 
 app.use(session({
     collection: 'sessions',
+    //httpOnly: false,
+    name: 'session',
     resave: false,
     saveUninitialized: true,
     secret: config.session_secret,

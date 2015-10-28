@@ -8,6 +8,7 @@ module.exports = function(app) {
     app.delete('/items/:id', items.delete); 
 
     app.get('/', function(req, res){
+        //res.setHeader('httpOnly','false');
         res.sendFile(__dirname + '/client/views/index.html');
     });
 };
