@@ -11,7 +11,7 @@
         <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <form ng-submit="itemCtrl.addPost()">
+                <form ng-submit="itemCtrl.previewPost()">
                   <input type="text" ng-model="itemCtrl.title" placeholder="Title" required></input>
                     <input type="text" ng-model="itemCtrl.description" placeholder="Description" required></input>
                   <button type="submit" class="btn btn-primary" ng-model="checkModel">Post</button>
@@ -39,6 +39,8 @@
     <img ng-src="{{ itemCtrl.newItem.imgurl }}">
     <h3> {{ itemCtrl.newItem.name }} </h3>
     <p> {{ itemCtrl.newItem.description }} </p>
+    <button ng-click="itemCtrl.addPost()">Yes</button>
+    <button ng-click="itemCtrl.resetNewItem">No</button>
 </div>
 
     <script src="/bower/angular/angular.js"></script> 
