@@ -31,11 +31,11 @@
         }
 
         itemsCtrl.addPost = function() {
-            itemsCtrl.items.push({name: itemsCtrl.newItem.name, description: itemsCtrl.newItem.description, yum: "0", imgurl: itemsCtrl.newItem.imgurl});
             itemsCtrl.incoming = false;
             $http.post('./items', itemsCtrl.newItem)
             .then(function(response) {
                 itemsCtrl.resetNewItem();
+                itemsCtrl.items.push(response.data);
             },
             function(response) {
                 alert("Server error");

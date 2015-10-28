@@ -23,11 +23,12 @@ exports.add = function(req, res) {
     item.imgurl = req.body.imgurl;
     //console.log(req.body);
 
-    item.save(function (err) {
+    item.save(function (err, createdItem) {
         if (err) {
             return console.log(err);
         }
-        return res.send(item.name + " description:" + item.description + "imgurl: " + item.imgurl);
+        console.log(createdItem);
+        return res.send(createdItem);
     });
 };
 
