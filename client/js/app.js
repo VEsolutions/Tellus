@@ -42,24 +42,24 @@
                 body = res.data;
                 var parsed = angular.fromJson(body);
                 var parsedData = parsed['data'];
-                data.imgurl = parsedData;
+                data.imgurl = parsedData['image_url'];
                 itemsCtrl.newItem = data;
                 itemsCtrl.incoming = true;
+
+
+                //Post if yes.
+                $http.post('/items', data).then(function(response) {
+                    itemsCtrl.items.push({name: itemsCtrl.title, description: itemsCtrl.description, yum: "0"});
+                },
+                function(response) {
+                    alert("Server error");
+                });
+
 
             }, function(res) { // error callback
                 alert(res.message);
             });
 
-
-            
-
-
-            $http.post('/items', data).then(function(response) {
-                itemsCtrl.items.push({name: itemsCtrl.title, description: itemsCtrl.description, yum: "0"});
-            },
-            function(response) {
-                alert("Server error");
-            });
         }
 
         itemsCtrl.update = function(post, number) {
