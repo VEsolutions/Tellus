@@ -75,6 +75,9 @@ exports.update = function(req, res) {
     });*/
 };
 
+
+
+// If we want to delete when vote == -5.
 exports.delete = function(req, res) {
     var id = req.params.id;
     Item.remove({'_id':id}, function(result) {
