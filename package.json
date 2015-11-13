@@ -6,6 +6,7 @@
     "angular": "^1.5.0-beta.0",
     "body-parser": "^1.13.2",
     "connect-mongo": "^0.8.2",
+    "cookie-parser": "node_modules/cookie-parser",
     "express": "^4.10.2",
     "express-session": "^1.12.1",
     "mongoose": "^4.1.0",
